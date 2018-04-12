@@ -11,7 +11,7 @@
 	.info_timeline dl dd { width: calc(100% - 200px); width: -moz-calc(100% - 200px); width: -webkit-calc(100% - 200px); }
 	.footer a { float: right; }
 	.tip_avatar_con { background: url('../images/cartoon.png') no-repeat 20% center; }
-	.tip_right { width: 45%; height: 460px; position: absolute; right: 0; top: 50%; margin: -230px 0 0; }
+	.tip_right { width: 45%; height: 460px; position: absolute; right: 0; top: 40%; margin: -230px 0 0; }
 	.info_content.over .desc { height: 0; margin: 0; }
 	.info_content.over .s5.curr { height: 474px }
 	.info_content.over .s4.curr { padding-top: 100px; height: 374px }
