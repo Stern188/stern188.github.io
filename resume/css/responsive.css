@@ -13,11 +13,12 @@
 	.tip_avatar_con { background: url('../images/cartoon.png') no-repeat 20% center; }
 	.tip_right { width: 45%; height: 460px; position: absolute; right: 0; top: 40%; margin: -230px 0 0; }
 	.info_content.over .desc { height: 0; margin: 0; }
-	.info_content.over .s5.curr { height: 474px }
-	.info_content.over .s4.curr { padding-top: 100px; height: 374px }
-	.info_content.over .s3.curr { padding-top: 200px; height: 274px }
-	.info_content.over .s2.curr { padding-top: 300px; height: 174px }
-	.info_content.over .s1.curr { padding-top: 400px; height: 74px }
+	.info_content.over .s1.curr { height: 574px }
+	.info_content.over .s2.curr { padding-top: 100px; height: 474px }
+	.info_content.over .s3.curr { padding-top: 200px; height: 374px }
+	.info_content.over .s4.curr { padding-top: 300px; height: 274px }
+	.info_content.over .s5.curr { padding-top: 400px; height: 174px }
+	.info_content.over .s6.curr { padding-top: 500px; height: 74px }
 	.info_content ul li .btn_go { height: 30px; line-height: 30px; padding: 0 5px 0 10px; position: absolute; right: 10px; top: 5px; font-weight: normal; display: none; }
 	.info_content ul li:hover .btn_go { display: block; }
 
