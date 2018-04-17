@@ -121,23 +121,9 @@ $(function () {
         open_layout();
     });
 
-    $('.product_4').click(function () {
-        del_slide();
-        $('.carousel').carousel(3);
-        add_slide();
-        open_layout();
-    });
-
-    $('.product_5').click(function () {
-        del_slide();
-        $('.carousel').carousel(4);
-        add_slide();
-        open_layout();
-    });
-
     $('.btn_more').click(function () {
         del_slide();
-        $('.carousel').carousel(5);
+        $('.carousel').carousel(3);
         add_slide();
         open_layout();
     });
