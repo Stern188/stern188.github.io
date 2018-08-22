@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #content div#main-content h2 {
+            color: red;
+            /* border: 1px solid #000; */
+            /* padding:5px; */
+        }
+
+        #content #main-content>h2 {
+            color: blue;
+        }
+
+        body #content div[id="main-content"] h2 {
+            color: green;
+        }
+
+        #main-content div.paragraph h2 {
+            color: orange;
+        }
+
+        #main-content [class="paragraph"] h2 {
+            color: yellow;
+        }
+
+        div#main-content div.paragraph h2.first {
+            color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="main-content">
+            <h2>
+                <em>CSS</em>简介
+            </h2>
+            <p>CSS（Cascading Style Sheet，可译为“层叠样式表”或“级联样式表”）是一组格式设置规则，用于控制Web页面的外观。</p>
+            <div class="paragraph">
+                <h2 class="first">使用
+                    <em>CSS</em>布局的优点
+                </h2>
+                <p>1、表现和内容相分离 2、提高页面浏览速度 3、易于维护和改版 4、使用CSS布局更符合现在的W3C标准.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

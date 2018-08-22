@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        :root {
+            --color: blue;
+        }
+
+        div {
+            --color: green;
+        }
+
+        #alert {
+            --color: red;
+        }
+
+        * {
+            color: var(--color);
+        }
+    </style>
+</head>
+
+<body>
+    <p>猜我的颜色是什么</p>
+    <div>猜我的颜色是什么</div>
+    <div id="alert">猜我的颜色是什么</div>
+</body>
+
+</html>

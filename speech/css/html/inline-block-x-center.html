@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>多块级元素水平居中-inline-block</title>
+    <style>
+        .container {
+            height: 100px;
+            padding: 8px;
+            text-align: center;
+            border: 2px dashed #f69c55;
+        }
+
+        .inline-block {
+            padding: 8px;
+            width: 4rem;
+            margin: 0 8px;
+            color: #fff;
+            background: #000;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inline-block">
+            简单不先于复杂
+        </div>
+        <div class="inline-block">
+            而是在复杂之后
+        </div>
+        <div class="inline-block">
+            简单不先于复杂，而是在复杂之后。
+        </div>
+    </div>
+</body>
+
+</html>

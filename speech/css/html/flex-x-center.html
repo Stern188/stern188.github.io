@@ -1,0 +1,39 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>多块级元素水平居中-弹性布局</title>
+    <style>
+        .flex-center {
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            border: 2px dashed #f69c55;
+        }
+
+        .flex-center>div {
+            padding: 8px;
+            width: 4rem;
+            margin: 0 8px;
+            color: #fff;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-center">
+        <div>
+            简单不先于复杂。
+        </div>
+        <div>
+            简单不先于复杂，而是在复杂之后。
+        </div>
+        <div>
+            而是在复杂之后。
+        </div>
+    </div>
+</body>
+
+</html>

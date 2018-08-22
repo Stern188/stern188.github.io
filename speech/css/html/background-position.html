@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .box1,
+        .box2,
+        .box3,
+        .box4 {
+            float: left;
+            margin-right: 1em;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background: #F3F2E2 url(../img/0.png) no-repeat;
+            font-size: 9px;
+            text-align: center;
+
+        }
+
+        .box1 {
+            background-position: 0% 0%;
+        }
+
+        .box2 {
+            background-position: 35% 0%;
+
+        }
+
+        .box3 {
+            background-position: 66.6666666666666% 0%
+        }
+
+        .box4 {
+            background: #F3F2E2 url(../img/0.png) 100% 0% no-repeat;
+        }
+
+        .wrap {
+            clear: both;
+            overflow: hidden;
+        }
+
+        p {
+            clear: both;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box1" style="background-position:0% 0%"></div>
+        <div class="box2" style="background-position:0% 33.33333%"></div>
+        <div class="box3" style="background-position:0% 66.66666%"></div>
+        <div class="box4" style="background-position:0% 100%"></div>
+    </div>
+    <img src="../img/0.png" alt="1234" style="margin-top:2em; clear:both">
+</body>
+
+</html>

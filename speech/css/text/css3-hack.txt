@@ -1,0 +1,15 @@
+JavaScript代码:
+
+复制代码代码如下:
+
+var htmlObj = document.documentElement;
+htmlObj.setAttribute('data-useragent',navigator.userAgent);
+htmlObj.setAttribute('data-platform', navigator.platform );
+
+CSS3匹配代码：
+
+复制代码代码如下:
+
+html[data-useragent*='MSIE 10.0'] #id {
+	color: #F00;
+}

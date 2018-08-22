@@ -1,0 +1,48 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>流体布局</title>
+    <style>
+        body {
+            width: 500px;
+            border: 1px solid red;
+        }
+
+        .flow-box {
+            width: 500px;
+            background-color: #cbcaf3;
+            overflow: auto;
+            resize: horizontal;
+        }
+
+        .flow-box>img {
+            float: left;
+            /* position: absolute; */
+        }
+
+        .flow-content {
+            margin-left: 150px;
+        }
+
+        img {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flow-box">
+        <img src="../img/1.png" width="128">
+        <div class="flow-content">
+            <img src="../img/1.png" width="100%" height="190">
+        </div>
+    </div>
+
+    <script>
+        var div = document.getElementsByTagName("div")[0];
+    </script>
+</body>
+
+</html>

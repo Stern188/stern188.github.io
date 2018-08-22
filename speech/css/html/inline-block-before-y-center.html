@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>多行内联元素垂直居中-伪元素</title>
+    <style>
+        .ghost-center {
+            position: relative;
+            border: 2px dashed #f69c55;
+            padding: 10px 0;
+        }
+
+        .ghost-center::before {
+            content: " ";
+            display: inline-block;
+            height: 100%;
+            width: 1%;
+            vertical-align: middle;
+        }
+
+        .ghost-center p {
+            display: inline-block;
+            vertical-align: middle;
+            width: 12rem;
+            padding: 1rem;
+            color: #fff;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ghost-center">
+        <p>“你毕业才两年，这三年工作经验是怎么来的？”程序员答：“加班。”</p>
+        <p>“你毕业才两年，这三年工作经验是怎么来的？”程序员答：“加班。”</p>
+        <p>“你毕业才两年，这三年工作经验是怎么来的？”程序员答：“加班。”</p>
+    </div>
+</body>
+
+</html>

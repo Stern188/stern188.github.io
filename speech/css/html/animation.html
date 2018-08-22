@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        div:hover {
+            -webkit-animation: 1s rainbow;
+            animation: 1s rainbow;
+            /* -webkit-animation: 1s rainbow infinite; */
+            /* animation: 1s rainbow infinite; */
+            /* -webkit-animation: 1s rainbow 3; */
+            /* animation: 1s rainbow 3; */
+            -webkit-animation: 1s rainbow forwards;
+            animation: 1s rainbow;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background: #c00;
+            }
+            50% {
+                background: orange;
+            }
+            100% {
+                background: yellowgreen;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>

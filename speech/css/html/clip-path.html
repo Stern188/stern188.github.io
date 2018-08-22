@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>clip-path实例</title>
+    <style>
+        #clipped {
+            margin-bottom: 20px;
+            clip-path: url(#cross);
+        }
+    </style>
+</head>
+
+<body>
+    <img id="clipped" src="../img/MDN.svg" alt="MDN logo">
+    <svg height="0" width="0">
+        <defs>
+            <clipPath id="cross">
+                <rect y="110" x="137" width="90" height="90" />
+                <rect x="0" y="110" width="90" height="90" />
+                <rect x="137" y="0" width="90" height="90" />
+                <rect x="0" y="0" width="90" height="90" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <select id="clipPath">
+        <option value="none">none</option>
+        <option value="url(#cross)" selected>url(#cross)</option>
+        <option value="circle(100px at 110px 100px)">circle(100px at 110px 100px)</option>
+        <option value="ellipse(25% 40% at 50% 50%)">ellipse(25% 40% at 50% 50%)</option>
+        <option value="inset(20px round 20px)">inset(20px round 20px)</option>
+        <option value="inset(30px)">inset(30px)</option>
+        <option value="inset(10px 20px)">inset(10px 20px)</option>
+        <option value="inset(10px 20px 30px 40px)">inset(10px 20px 30px 40px)</option>
+        <option value="polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)">polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)</option>
+    </select>
+    <script>
+        var clipPathSelect = document.getElementById("clipPath");
+        clipPathSelect.addEventListener("change", function (evt) {
+            document.getElementById("clipped").style.clipPath = evt.target.value;
+        });
+    </script>
+</body>
+
+</html>

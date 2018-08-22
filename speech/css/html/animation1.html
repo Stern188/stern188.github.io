@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            width: 9em;
+            padding: .6em 1em;
+            margin: 1em auto;
+            background: yellowgreen;
+            /* animation: spin 1s linear infinite; */
+            /* animation-play-state: paused; */
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(1turn);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(1turn);
+            }
+        }
+
+        div:hover {
+            animation: spin 1s linear infinite;
+            -webkit-animation: spin 1s linear infinite;
+            /* animation-play-state: running; */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>

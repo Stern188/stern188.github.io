@@ -1,0 +1,50 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>如何使DIV在屏幕上水平垂直居中显示？兼容性要好</title>
+    <style>
+        .outer {
+            display: table;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .middle {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .inner {
+            margin-left: auto;
+            margin-right: auto;
+            background: #2b2b2b;
+            color: #fff;
+            padding: 2rem;
+            max-width: 320px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <p>一个好的程序员应该是那种过单行线都要往两边看的人。</p>
+                <button value="add" id="add">增加内容</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://res.42du.cn/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#add").click(function () {
+                $("p").after("<p>解决问题大多数都很容易；找到问题出在哪里却很难。</p>");
+            });
+        });
+    </script>
+</body>
+
+</html>
