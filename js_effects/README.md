@@ -19,7 +19,7 @@
 #### <label id="tree">树形</label>&emsp;[返回顶部](#top)
 1、[树形结构菜单之jQuery版](https://stern188.github.io/js_effects/tree/index.html)
 #### <label id="loading">加载动画</label>&emsp;[返回顶部](#top)
-1、[纯CSS3彩虹弹性加载动画](https://stern188.github.io/js_effects/loading/index.html)
+1、[纯CSS3彩虹弹性加载动画](https://stern188.github.io/js_effects/loading/index.html)&emsp;2、[HTML5 Canvas弹珠跳动加载](https://stern188.github.io/js_effects/loading1/index.html)
 #### <label id="topodemo">拓扑图</label>&emsp;[返回顶部](#top)
 1、[jsPlumb拓扑图](https://stern188.github.io/js_effects/topology/topodemo/index.html)&emsp;2、
 #### <label id="form">表单控件</label>&emsp;[返回顶部](#top)
