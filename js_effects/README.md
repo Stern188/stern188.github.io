@@ -1,5 +1,5 @@
 ## <label id="top">Js特效目录</label>
-**分类**：[游戏](#game)、[音乐](#songs)、[分页](#pagination)、[登录注册](#login)、[弹幕](#barrage)、[简历模板](#resume)、[网站模板](#webside)、[唯美](#confession)、[加载动画](#loading)、[拓扑图](#topodemo)、[表单控件](#form)、[瀑布流](#waterfalls)、[悬浮](#suspension)、[弹出框](#message)、[鼠标](#mouse)、[导航](#navigation)、[页面](#page)。
+**分类**：[游戏](#game)、[音乐](#songs)、[分页](#pagination)、[登录注册](#login)、[弹幕](#barrage)、[简历模板](#resume)、[网站模板](#webside)、[唯美](#confession)、[加载动画](#loading)、[拓扑图](#topodemo)、[表单控件](#form)、[瀑布流](#waterfalls)、[悬浮](#suspension)、[弹出框](#message)、[鼠标](#mouse)、[导航](#navigation)、[日历](#calendar)、[图片](#image)、[页面](#page)。
 #### <label id="game">游戏</label>&emsp;[返回顶部](#top)
 1、[jQuery仿电脑蜘蛛纸牌](https://stern188.github.io/js_effects/game/index.html)
 #### <label id="songs">音乐</label>&emsp;[返回顶部](#top)
@@ -17,11 +17,11 @@
 #### <label id="confession">唯美</label>&emsp;[返回顶部](#top)
 1、[jQuery+Html5实现唯美表白动画](https://stern188.github.io/js_effects/confession/index.html)&emsp;2、[CSS3 SVG点击爱心散开](https://stern188.github.io/js_effects/confession1/index.html)&emsp;3、[CSS3 SVG圆圈变换动画背景](https://stern188.github.io/js_effects/confession2/index.html)
 #### <label id="loading">加载动画</label>&emsp;[返回顶部](#top)
-1、[纯CSS3彩虹弹性加载动画](https://stern188.github.io/js_effects/loading/index.html)&emsp;2、[HTML5 Canvas弹珠跳动加载](https://stern188.github.io/js_effects/loading1/index.html)
+1、[纯CSS3彩虹弹性加载动画](https://stern188.github.io/js_effects/loading/index.html)&emsp;2、[HTML5 Canvas弹珠跳动加载](https://stern188.github.io/js_effects/loading1/index.html)&emsp;3、[纯CSS3方块翻转加载动画](https://stern188.github.io/js_effects/loading2/index.html)&emsp;4、[CSS3发光线条旋转加载动画](https://stern188.github.io/js_effects/loading3/index.html)&emsp;5、[CSS3 Loading网站加载动画](https://stern188.github.io/js_effects/loading4/index.html)
 #### <label id="topodemo">拓扑图</label>&emsp;[返回顶部](#top)
 1、[jsPlumb拓扑图](https://stern188.github.io/js_effects/topology/topodemo/index.html)&emsp;2、
 #### <label id="form">表单控件</label>&emsp;[返回顶部](#top)
-1、[checkbox样式](https://stern188.github.io/js_effects/form/index.html)&emsp;2、[JCheck单选框、复选框控件](https://stern188.github.io/js_effects/form1/index.html)&emsp;3、[可输入功能的下拉框](https://stern188.github.io/js_effects/form2/index.html)&emsp;4、[JavaScript与jQuery获取相邻控件](https://stern188.github.io/js_effects/form3/index.html)&emsp;5、[verJs表单验证](https://stern188.github.io/js_effects/form4/index.html)
+1、[checkbox样式](https://stern188.github.io/js_effects/form/index.html)&emsp;2、[JCheck单选框、复选框控件](https://stern188.github.io/js_effects/form1/index.html)&emsp;3、[可输入功能的下拉框](https://stern188.github.io/js_effects/form2/index.html)&emsp;4、[JavaScript与jQuery获取相邻控件](https://stern188.github.io/js_effects/form3/index.html)&emsp;5、[verJs表单验证](https://stern188.github.io/js_effects/form4/index.html)&emsp;6、[纯CSS3复选框开关按钮切换](https://stern188.github.io/js_effects/form5/index.html)
 #### <label id="waterfalls">瀑布流</label>&emsp;[返回顶部](#top)
 1、[js实现网页瀑布流效果](https://stern188.github.io/js_effects/waterfalls/index.html)&emsp;2、[响应式瀑布流](https://stern188.github.io/js_effects/waterfalls1/index.html)
 #### <label id="suspension">悬浮</label>&emsp;[返回顶部](#top)
@@ -31,6 +31,10 @@
 #### <label id="mouse">鼠标</label>&emsp;[返回顶部](#top)
 1、[星星特效](https://stern188.github.io/js_effects/mouse/index.html)&emsp;2、[爆炸特效](https://stern188.github.io/js_effects/mouse1/index.html)&emsp;3、[翻书特效](https://stern188.github.io/js_effects/mouse2/index.html)&emsp;4、[翻转特效](https://stern188.github.io/js_effects/mouse3/index.html)&emsp;5、[鼠标滚动以鼠标为中心缩放](https://stern188.github.io/js_effects/mouse4/index.html)&emsp;6、[防止事件冒泡](https://stern188.github.io/js_effects/mouse5/index.html)
 #### <label id="navigation">导航</label>&emsp;[返回顶部](#top)
-1、[纯CSS水平导航](https://stern188.github.io/js_effects/navigation/index.html)&emsp;2、[CSS3自适应浏览器大小导航](https://stern188.github.io/js_effects/navigation1/index.html)&emsp;3、[树形结构菜单之jQuery版](https://stern188.github.io/js_effects/navigation2/index.html)&emsp;4、[jQuery左侧固定导航下拉菜单](https://stern188.github.io/js_effects/navigation3/index.html)
+1、[纯CSS水平导航](https://stern188.github.io/js_effects/navigation/index.html)&emsp;2、[CSS3自适应浏览器大小导航](https://stern188.github.io/js_effects/navigation1/index.html)&emsp;3、[树形结构菜单之jQuery版](https://stern188.github.io/js_effects/navigation2/index.html)&emsp;4、[jQuery左侧固定导航下拉菜单](https://stern188.github.io/js_effects/navigation3/index.html)&emsp;5、[CSS3鼠标悬停3D图标菜单特效](https://stern188.github.io/js_effects/navigation4/index.html)&emsp;5、[jQuery右下角悬浮图标菜单](https://stern188.github.io/js_effects/navigation5/index.html)
+#### <label id="calendar">日历</label>&emsp;[返回顶部](#top)
+1、[CSS3日历表背景颜色切换](https://stern188.github.io/js_effects/time/index.html)&emsp;2、[周日历](https://stern188.github.io/js_effects/time1/index.html)
+#### <label id="image">图片</label>&emsp;[返回顶部](#top)
+1、[CSS3日历表背景颜色切换](https://stern188.github.io/js_effects/time/index.html)&emsp;2、[周日历](https://stern188.github.io/js_effects/time1/index.html)
 #### <label id="page">页面</label>&emsp;[返回顶部](#top)
 1、[两列固定宽度，高度；右窄左宽型+头部+导航+尾部](https://stern188.github.io/js_effects/page/index.html)&emsp;2、[左右2列固定宽度,高度自适应并且两列底部齐平+头部+导航+尾部](https://stern188.github.io/js_effects/page1/index.html)&emsp;3、[三列固定宽度,高度；头部+导航+尾部](https://stern188.github.io/js_effects/page2/index.html)&emsp;4、[两列弹性宽度；左列宽度不变，右列自适应；头部+导航+尾部](https://stern188.github.io/js_effects/page3/index.html)&emsp;5、[三列弹性宽度；中间栏宽度自适应；头部+导航+尾部](https://stern188.github.io/js_effects/page4/index.html)&emsp;6、[左右2列,右列固定宽度,左列宽度自适应，高度自适应并且两列底部齐平+头部+导航+尾部](https://stern188.github.io/js_effects/page5/index.html)&emsp;7、[获取浏览器窗口大小改变时的宽高](https://stern188.github.io/js_effects/page6/index.html)&emsp;8、[未知大小的div实现屏幕居中的方法](https://stern188.github.io/js_effects/page7/index.html)&emsp;9、[使用JS来判断浏览器类型(ie、firefox，等等)](https://stern188.github.io/js_effects/page8/index.html)&emsp;10、[js判断用户浏览网页使用的是移动设备是android，iphone，或ipad还是pc电脑)](https://stern188.github.io/js_effects/page9/index.html)&emsp;11、[js区分鼠标点的是左键还是右键以及屏蔽右键菜单)](https://stern188.github.io/js_effects/page10/index.html)&emsp;12、[js源生惯性滚动与回弹](https://stern188.github.io/js_effects/page11/index.html)
