@@ -1,5 +1,5 @@
 ## <label id="top">Js特效目录</label>
-**分类**：[游戏](#game)、[音乐](#songs)、[分页](#pagination)、[登录注册](#login)、[弹幕](#barrage)、[简历模板](#resume)、[网站模板](#webside)、[表白](#confession)、[树形](#tree)、[加载动画](#loading)、[拓扑图](#topodemo)、[表单控件](#form)、[瀑布流](#waterfalls)、[悬浮](#suspension)、[弹出框](#message)、[鼠标](#mouse)、[页面](#page)。
+**分类**：[游戏](#game)、[音乐](#songs)、[分页](#pagination)、[登录注册](#login)、[弹幕](#barrage)、[简历模板](#resume)、[网站模板](#webside)、[唯美](#confession)、[树形](#tree)、[加载动画](#loading)、[拓扑图](#topodemo)、[表单控件](#form)、[瀑布流](#waterfalls)、[悬浮](#suspension)、[弹出框](#message)、[鼠标](#mouse)、[页面](#page)。
 #### <label id="game">游戏</label>&emsp;[返回顶部](#top)
 1、[jQuery仿电脑蜘蛛纸牌](https://stern188.github.io/js_effects/game/index.html)
 #### <label id="songs">音乐</label>&emsp;[返回顶部](#top)
@@ -14,8 +14,8 @@
 1、[简历模板](https://stern188.github.io/js_effects/resume/index.html)
 #### <label id="webside">网站模板</label>&emsp;[返回顶部](#top)
 1、[电商模板](https://stern188.github.io/js_effects/webside/index.html)&emsp;2、[电商模板1](https://stern188.github.io/js_effects/webside1/index.html)
-#### <label id="confession">表白</label>&emsp;[返回顶部](#top)
-1、[jQuery+Html5实现唯美表白动画](https://stern188.github.io/js_effects/confession/index.html)
+#### <label id="confession">唯美</label>&emsp;[返回顶部](#top)
+1、[jQuery+Html5实现唯美表白动画](https://stern188.github.io/js_effects/confession/index.html)&emsp;2、[jQuery+Html5实现唯美表白动画](https://stern188.github.io/js_effects/confession/index.html)
 #### <label id="tree">树形</label>&emsp;[返回顶部](#top)
 1、[树形结构菜单之jQuery版](https://stern188.github.io/js_effects/tree/index.html)
 #### <label id="loading">加载动画</label>&emsp;[返回顶部](#top)
