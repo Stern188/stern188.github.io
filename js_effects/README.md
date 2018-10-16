@@ -1,7 +1,7 @@
 ## <label id="top">Js特效目录</label>
 **分类**：[游戏](#game)、[音乐](#songs)、[分页](#pagination)、[登录注册](#login)、[弹幕](#barrage)、[简历模板](#resume)、[网站模板](#webside)、[唯美](#confession)、[加载动画](#loading)、[拓扑图](#topodemo)、[表单控件](#form)、[瀑布流](#waterfalls)、[悬浮](#suspension)、[弹出框](#message)、[鼠标](#mouse)、[导航](#navigation)、[日历](#calendar)、[图片](#image)、[页面](#page)。
 #### <label id="game">游戏</label>&emsp;[返回顶部](#top)
-1、[jQuery仿电脑蜘蛛纸牌](https://stern188.github.io/js_effects/game/index.html)
+1、[jQuery仿电脑蜘蛛纸牌](https://stern188.github.io/js_effects/game/index.html)&emsp;2、[16宫格翻牌匹配HTML5](https://stern188.github.io/js_effects/game1/index.html)&emsp;3、[HTML5青蛙吃蚊子](https://stern188.github.io/js_effects/game2/index.html)
 #### <label id="songs">音乐</label>&emsp;[返回顶部](#top)
 1、[jQuery音乐播放歌词同步显示](https://stern188.github.io/js_effects/songs/index.html)
 #### <label id="pagination">分页</label>&emsp;[返回顶部](#top)
