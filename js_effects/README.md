@@ -13,7 +13,7 @@
 #### <label id="resume">简历模板</label>&emsp;[返回顶部](#top)
 1、[简历模板](https://stern188.github.io/js_effects/resume/index.html)
 #### <label id="webside">网站模板</label>&emsp;[返回顶部](#top)
-1、[电商模板](https://stern188.github.io/js_effects/webside/index.html)&emsp;2、[电商模板1](https://stern188.github.io/js_effects/webside1/index.html)
+1、[电商模板](https://stern188.github.io/js_effects/webside/index.html)&emsp;2、[电商模板1](https://stern188.github.io/js_effects/webside1/index.html)&emsp;3、[建筑工程施工响应式HTML5模板](https://stern188.github.io/js_effects/webside2/index.html)
 #### <label id="confession">唯美</label>&emsp;[返回顶部](#top)
 1、[jQuery+Html5实现唯美表白动画](https://stern188.github.io/js_effects/confession/index.html)&emsp;2、[CSS3 SVG点击爱心散开](https://stern188.github.io/js_effects/confession1/index.html)&emsp;3、[CSS3 SVG圆圈变换动画背景](https://stern188.github.io/js_effects/confession2/index.html)
 #### <label id="loading">加载动画</label>&emsp;[返回顶部](#top)
