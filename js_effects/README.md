@@ -54,6 +54,3 @@
 1、[js实现网页瀑布流效果](https://stern188.github.io/js_effects/waterfalls/waterfalls/index.html){:target="_blank"}&emsp;2、[响应式瀑布流](https://stern188.github.io/js_effects/waterfalls/waterfalls1/index.html){:target="_blank"}
 #### <label id="webside">网站模板</label>&emsp;[返回顶部](#top)
 1、[电商模板](https://stern188.github.io/js_effects/webside/webside/index.html){:target="_blank"}&emsp;2、[电商模板1](https://stern188.github.io/js_effects/webside/webside1/index.html){:target="_blank"}&emsp;3、[建筑工程施工响应式HTML5模板<sup style="color:red;">hot</sup>](https://stern188.github.io/js_effects/webside/webside2/index.html){:target="_blank"}&emsp;4、[兼容IE6的后台管理系统模版JsAdmin<sup style="color:red;">hot</sup>](https://stern188.github.io/js_effects/webside/webside3/index.html){:target="_blank"}&emsp;5、[建筑工业设计事务所响应式模板<sup style="color:red;">hot</sup>](https://stern188.github.io/js_effects/webside/webside4/index.html){:target="_blank"}&emsp;6、[自媒体微商营销企业官网模板](https://stern188.github.io/js_effects/webside/webside5/index.html){:target="_blank"}&emsp;7、[单页面模板](https://stern188.github.io/js_effects/webside/webside6/index.html){:target="_blank"}&emsp;8、[HTML5网站即将上线单页面特效](https://stern188.github.io/js_effects/webside/webside7/index.html){:target="_blank"}&emsp;9、[简历模板](https://stern188.github.io/js_effects/webside/webside8/index.html){:target="_blank"}
-```js
-    alert(1)
-```
