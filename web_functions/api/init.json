@@ -22,8 +22,14 @@
           "target": "_self"
         },
         {
-          "title": "web特效",
+          "title": "特效",
           "href": "page/effects.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "性能",
+          "href": "page/performance.html",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },
@@ -42,6 +48,12 @@
             {
               "title": "字符串",
               "href": "page/js/string.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "数字",
+              "href": "page/js/number.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

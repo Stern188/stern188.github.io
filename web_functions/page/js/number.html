@@ -14,43 +14,22 @@
     <div class="layuimini-container">
         <div class="layuimini-main">
             <div class="search-box"></div>
-            <blockquote class="layui-elem-quote">
-                <a href="https://blog.csdn.net/cuishizun/article/details/109309896">字符串属性及方法</a>
-            </blockquote>
             <div class="layui-field-box" style="display: flex;flex-wrap: wrap;">
                 <div class="layui-collapse" lay-filter="test" style="margin-right: 10px;">
                     <div class="layui-colla-item">
-                        <h2 class="layui-colla-title">统计一个字符串出现最多的字母</h2>
+                        <h2 class="layui-colla-title">判断一个值是否为整数</h2>
                         <div class="layui-colla-content">
-                            <blockquote class="layui-elem-quote" style="margin-top: 10px;">
-                                <p>思路：</p>
-
-                                <p class="text-indent">1、统计每个字母出现的次数，存起来</p>
-                                <p class="text-indent">2、然后进行比较</p>
-                            </blockquote>
                             <pre class="layui-code" lay-title="JavaScript">
-function maxTimesChar(str) {  
-    if(str.length == 1) {
-        return str;
-    }
-    let charObj = {};
-    for(let i=0;i<str.length;i++) {
-        if(!charObj[str.charAt(i)]) {
-        charObj[str.charAt(i)] = 1;
-        }else{
-        charObj[str.charAt(i)] += 1;
-        }
-    }
-    let maxChar = '',
-        maxValue = 1;
-    for(var k in charObj) {
-        if(charObj[k] >= maxValue) {
-        maxChar = k;
-        maxValue = charObj[k];
-        }
-    }
-    return maxChar;
-}
+let mynum = 123;
+let mynumStr = "123";
+console.log(`${mynum} is a number?`,Number.isInteger(mynum));
+console.log(`${mynumStr} is a number?`, Number.isInteger(mynumStr));
+                            </pre>
+
+                            输出:
+                            <pre class="layui-code" lay-title="JavaScript">
+123 is a number? true
+"123" is a number? false
                             </pre>
                         </div>
                     </div>
