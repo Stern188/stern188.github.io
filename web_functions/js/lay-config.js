@@ -27,5 +27,7 @@ layui.config({
     echartsTheme: 'echarts/echartsTheme', // echarts图表主题扩展
     wangEditor: 'wangEditor/wangEditor', // wangEditor富文本扩展
     layarea: 'layarea/layarea', //  省市县区三级联动下拉选择器
-    searchItem: 'searchItem/searchItem', // 折叠面板搜索功能
+    searchItem: 'searchItem/searchItem', // 折叠面板搜索功能封装
+    face: 'easyeditor/face', // markdown功能扩展
+    easyeditor: 'easyeditor/easyeditor', // markdown功能扩展
 });

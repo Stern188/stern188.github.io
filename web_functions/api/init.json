@@ -22,6 +22,12 @@
           "target": "_self"
         },
         {
+          "title": "web特效",
+          "href": "page/effects.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
           "title": "JS",
           "href": "",
           "icon": "fa fa-home",
@@ -29,19 +35,13 @@
           "child": [
             {
               "title": "数组",
-              "href": "page/array.html",
+              "href": "page/js/array.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "字符串",
-              "href": "page/string.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "主页三",
-              "href": "page/welcome-3.html",
+              "href": "page/js/string.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
