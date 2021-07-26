@@ -19,11 +19,31 @@
           "title": "文档下载",
           "href": "page/reg.html",
           "icon": "fa fa-window-maximize",
-          "target": "_self"
+          "target": "_self",
+          "child": [
+            {
+              "title": "JavaScript",
+              "href": "page/doc/javascript.html",
+              "icon": "fa fa-window-maximize",
+              "target": "_self"
+            },
+            {
+              "title": "Css",
+              "href": "page/doc/css.html",
+              "icon": "fa fa-window-maximize",
+              "target": "_self"
+            },
+            {
+              "title": "Git",
+              "href": "page/doc/git.html",
+              "icon": "fa fa-window-maximize",
+              "target": "_self"
+            }
+          ]
         },
         {
           "title": "软件下载",
-          "href": "page/reg.html",
+          "href": "page/software.html",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },

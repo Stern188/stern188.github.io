@@ -29,7 +29,7 @@ layui.define(['code'], function (exports) {
                     if (res) {
                         data.push(res);
                         $('.dictionary').append(
-                            '<div class="layui-collapse" lay-filter="test" style="margin-right: 10px;">'+
+                            '<div class="layui-collapse mr10" lay-filter="test">'+
                                 '<div class="layui-colla-item">'+
                                     '<h2 class="layui-colla-title" onclick="titleClick(this)">'+ 
                                         options[i].title +
