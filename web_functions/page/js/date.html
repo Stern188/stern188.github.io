@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+</head>
+
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+            <div class="search-box"></div>
+            <div class="layui-field-box" style="display: flex;flex-wrap: wrap;">
+                <div class="layui-collapse" lay-filter="test" style="margin-right: 10px;">
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">返回指定格式的日期</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+function formatDate(format) {
+    var formatTime;
+    format = format || 'yyyy-MM-dd hh:mm:ss';
+    var date = new Date();
+    var o = {
+        "M+": date.getMonth() + 1, //月份
+        "d+": date.getDate(), //日
+        "h+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds() //秒
+    };
+    if (/(y+)/.test(format)) {
+        formatTime = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    } else {
+        formatTime = format;
+    }
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(formatTime))
+            formatTime = formatTime.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k])
+                .length)));
+    }
+    return formatTime;
+}
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">时间戳转指定格式的日期</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+function timeToDate(num, fmt) {
+    var date = new Date(parseInt(num));
+    var o = {
+        "M+": date.getMonth() + 1, //月份
+        "d+": date.getDate(), //日
+        "h+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        // "s+": date.getSeconds(), //秒
+        // "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+        // "S": date.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt))
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">秒转分秒</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+function scoundsToMScounds(s) {
+    // 计算分钟：将秒数除以60，然后下舍入，得到分钟数
+    var h;
+    h = Math.floor(s / 60);
+    // 计算秒：取得秒%60的余数，得到秒数
+    s = s % 60;
+    // 将变量转换为字符串
+    h += '';
+    s += '';
+    // 如果只有一位数，前面增加一个0
+    h = (h.length == 1) ? '0' + h : h;
+    s = (s.length == 1) ? '0' + s : s;
+    return h + ':' + s;
+}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../lib/layui-v2.6.3/layui.min.js" charset="utf-8"></script>
+    <script src="../../js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+    <script>
+        layui.use(['code', 'searchItem'], function () {
+            var code = layui.code,
+                searchItem = layui.searchItem;
+            code();
+            searchItem.render();
+        });
+    </script>
+</body>
+
+</html>

@@ -30,15 +30,15 @@ layui.define(['form'], function (exports) {
                         const titleDom = itemDom[j];
                         if($($(titleDom.children)[0]).text().indexOf(keyword)>=0){
                             itemFlag = false;
-                            $(titleDom).removeClass('hide');
+                            $(titleDom).removeClass('layui-hide');
                         }else{
-                            $(titleDom).addClass('hide');
+                            $(titleDom).addClass('layui-hide');
                         }
                     }
                     if(itemFlag){
-                        $(collapseDom[i]).addClass('hide');
+                        $(collapseDom[i]).addClass('layui-hide');
                     }else{
-                        $(collapseDom[i]).removeClass('hide');
+                        $(collapseDom[i]).removeClass('layui-hide');
                     }
                 }
                 return false;

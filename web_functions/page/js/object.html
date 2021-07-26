@@ -17,61 +17,116 @@
             <div class="layui-field-box" style="display: flex;flex-wrap: wrap;">
                 <div class="layui-collapse" lay-filter="test" style="margin-right: 10px;">
                     <div class="layui-colla-item">
-                        <h2 class="layui-colla-title">判断一个值是否为整数</h2>
+                        <h2 class="layui-colla-title">合并多个对象</h2>
                         <div class="layui-colla-content">
+                            方法一：
                             <pre class="layui-code" lay-title="JavaScript">
-let mynum = 123;
-let mynumStr = "123";
-console.log(`${mynum} is a number?`,Number.isInteger(mynum));
-console.log(`${mynumStr} is a number?`, Number.isInteger(mynumStr));
+const user = { 
+    name: 'Kapil Raghuwanshi', 
+    gender: 'Male' 
+};
+const college = { 
+    primary: 'Mani Primary School', 
+    secondary: 'Lass Secondary School' 
+};
+const skills = { 
+    programming: 'Extreme', 
+    swimming: 'Average', 
+    sleeping: 'Pro' 
+};
+    
+const summary = {...user, ...college, ...skills};
                             </pre>
 
                             <pre>
-输出:123 is a number? true
-    "123" is a number? false
-                            </pre>
-                        </div>
-                    </div>
-                    <div class="layui-colla-item">
-                        <h2 class="layui-colla-title">将十进制转换为二进制或十六进制</h2>
-                        <div class="layui-colla-content">
-                            <pre class="layui-code" lay-title="JavaScript">
-const num = 10;
-
-num.toString(2);
-                            </pre>
-
-                            <pre>
-输出:"1010"
-                            </pre>
-                            <pre class="layui-code" lay-title="JavaScript">
-num.toString(16);
-                            </pre>
-
-                            <pre>
-输出:"a"
-                            </pre>
-                            <pre class="layui-code" lay-title="JavaScript">
-num.toString(8);
-                            </pre>
-
-                            <pre>
-输出:"12"
-                            </pre>
-                        </div>
-                    </div>
-                    <div class="layui-colla-item">
-                        <h2 class="layui-colla-title">生成指定长度的随机数字</h2>
-                        <div class="layui-colla-content">
-                            <pre class="layui-code" lay-title="JavaScript">
-function lenRandom(n) {
-    var res = "";
-    n = Math.abs(Number(n) || 5);
-    for (var i = 0; i < n; i++) {
-        res += Math.floor(Math.random() * 10);
+输出:{
+        gender: "Male"
+        name: "Kapil Raghuwanshi"
+        primary: "Mani Primary School"
+        programming: "Extreme"
+        secondary: "Lass Secondary School"
+        sleeping: "Pro"
+        swimming: "Average"
     }
-    return res;
-}
+                            </pre>
+                            方法二：
+                            <pre class="layui-code" lay-title="JavaScript">
+Object.assign({},user,college,skills)
+                            </pre>
+
+                            <pre>
+输出:{
+        gender: "Male"
+        name: "Kapil Raghuwanshi"
+        primary: "Mani Primary School"
+        programming: "Extreme"
+        secondary: "Lass Secondary School"
+        sleeping: "Pro"
+        swimming: "Average"
+    }
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">可选的链</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const user = {
+    employee: {
+        name: "Kapil"
+    }
+};
+user.employee?.name;
+                            </pre>
+                            
+                            <pre>
+输出:Kapil
+                            </pre>
+                            <pre class="layui-code" lay-title="JavaScript">
+user.employ?.name;
+                            </pre>
+
+                            <pre>
+输出:undefined
+                            </pre>
+                            <pre class="layui-code" lay-title="JavaScript">
+user.employ.name
+                            </pre>
+
+                            <pre>
+输出:VM21616:1 Uncaught TypeError: Cannot read property 'name' of undefined
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">将Object属性转换为属性数组</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const obj = { a: 1, b: 2, c: 3 };
+
+Object.entries(obj);
+                            </pre>
+                            
+                            <pre>
+输出:(3) [Array(2), Array(2), Array(2)]
+    0: (2) ["a", 1]
+    1: (2) ["b", 2]
+    2: (2) ["c", 3]
+    length: 3
+                            </pre>
+                            <pre class="layui-code" lay-title="JavaScript">
+Object.keys(obj);
+                            </pre>
+
+                            <pre>
+输出:(3) ["a", "b", "c"]
+                            </pre>
+                            <pre class="layui-code" lay-title="JavaScript">
+Object.values(obj);
+                            </pre>
+
+                            <pre>
+输出:(3) [1, 2, 3]
                             </pre>
                         </div>
                     </div>

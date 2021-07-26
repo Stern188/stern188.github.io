@@ -1,0 +1,24 @@
+.site-demo-laytpl div span {
+    display: inline-block;
+    text-align: center;
+    background: #101010;
+    color: #fff;
+}
+.site-demo-laytpl textarea, .site-demo-laytpl div span {
+    width: 40%;
+    padding: 15px;
+    margin: 0 15px;
+}
+.site-demo-laytpl textarea {
+    height: 700px;
+    border: none;
+    background-color: #3F3F3F;
+    color: #E3CEAB;
+    font-family: Courier New;
+    resize: none;
+}
+.site-demo-laytpl textarea, .site-demo-laytpl div span {
+    width: 40%;
+    padding: 15px;
+    margin: 0 15px;
+}

@@ -16,6 +16,30 @@
       "target": "_self",
       "child": [
         {
+          "title": "文档下载",
+          "href": "page/reg.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "软件下载",
+          "href": "page/reg.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "markdown",
+          "href": "page/markdown.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
+          "title": "字典",
+          "href": "page/dictionary/dictionary.html",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+        {
           "title": "正则表达式",
           "href": "page/reg.html",
           "icon": "fa fa-window-maximize",
@@ -24,12 +48,6 @@
         {
           "title": "特效",
           "href": "page/effects.html",
-          "icon": "fa fa-window-maximize",
-          "target": "_self"
-        },
-        {
-          "title": "性能",
-          "href": "page/performance.html",
           "icon": "fa fa-window-maximize",
           "target": "_self"
         },
@@ -54,6 +72,56 @@
             {
               "title": "数字",
               "href": "page/js/number.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "日期",
+              "href": "page/js/date.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "对象",
+              "href": "page/js/object.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "技巧",
+              "href": "page/js/skill.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "博客",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "外链导航",
+              "href": "page/blog/link.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "JavaScript",
+              "href": "page/js/string.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "Css",
+              "href": "page/js/number.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "Html",
+              "href": "page/js/object.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

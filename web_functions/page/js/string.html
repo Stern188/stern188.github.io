@@ -54,11 +54,59 @@ function maxTimesChar(str) {
                             </pre>
                         </div>
                     </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">创建一个计数器</h2>
+                        <div class="layui-colla-content">
+                            方法一：
+                            <pre class="layui-code" lay-title="JavaScript">
+let string = 'kapilalipak';
+
+const table={}; 
+for(let char of string) {
+    table[char]=table[char]+1 || 1;
+}
+                            </pre>
+
+                            <pre>
+输出:{k: 2, a: 3, p: 2, i: 2, l: 2}
+                            </pre>
+                            方法二：
+                            <pre class="layui-code" lay-title="JavaScript">
+const countMap = new Map();
+for (let i = 0; i < string.length; i++) {
+    if (countMap.has(string[i])) {
+    countMap.set(string[i], countMap.get(string[i]) + 1);
+    } else {
+    countMap.set(string[i], 1);
+    }
+}
+                            </pre>
+                            
+                            <pre>
+输出:Map(5) {"k" => 2, "a" => 3, "p" => 2, "i" => 2, "l" => 2}
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">单行的回文数检查</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+function checkPalindrome(str) {
+    return str == str.split('').reverse().join('');
+}
+checkPalindrome('naman');
+                            </pre>
+            
+                            <pre>
+输出:true
+                            </pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../../lib/layui-v2.6.3/layui.min.js" charset="utf-8"></script>
     <script src="../../js/lay-config.js?v=2.0.0" charset="utf-8"></script>
     <script>
         layui.use(['code', 'searchItem'], function () {

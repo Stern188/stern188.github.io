@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+</head>
+
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+            <div class="search-box"></div>
+            <div class="layui-field-box" style="display: flex;flex-wrap: wrap;">
+                <div class="layui-collapse" lay-filter="test" style="margin-right: 10px;">
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">双问号语法</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const foo = null ?? 'my school';
+                            </pre>
+            
+                            <pre>
+输出:"my school"
+                            </pre>
+                            <pre class="layui-code" lay-title="JavaScript">
+const baz = 0 ?? 42;
+                            </pre>
+            
+                            <pre>
+输出:0
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">剩余和展开语法</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+function myFun(a,  b, ...manyMoreArgs) {
+    return arguments.length;
+}
+myFun("one", "two", "three", "four", "five", "six");
+                            </pre>
+            
+                            <pre>
+输出:6
+                            </pre>
+                            <pre class="layui-code" lay-title="JavaScript">
+const parts = ['shoulders', 'knees']; 
+const lyrics = ['head', ...parts, 'and', 'toes']; 
+
+lyrics;
+                            </pre>
+            
+                            <pre>
+输出:(5) ["head", "shoulders", "knees", "and", "toes"]
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">代码执行时间</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+console.time()
+
+//some random code to be tested
+
+console.timeEnd()
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">默认参数</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const search = (arr, low=0,high=arr.length-1) => {
+    return high;
+}
+search([1,2,3,4,5]);
+                            </pre>
+            
+                            <pre>
+输出:4
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">交换两个数的值</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+let a = 5;
+let b = 8;
+[a,b] = [b,a]
+
+[a,b]
+                            </pre>
+            
+                            <pre>
+输出:(2) [8, 5]
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">页面上格式化显示数据结构</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+var data ={
+    "title": "Layui常用模块"
+    ,"list": [
+        {
+            "modname": "弹层"
+            ,"alias": "layer"
+            ,"site": "layer.layui.com"
+        }
+        ,{
+            "modname": "表单"
+            ,"alias": "form"
+        }
+        ,{
+            "modname": "分页"
+            ,"alias": "laypage"
+        }
+        ,{
+            "modname": "日期"
+            ,"alias": "laydate"
+        }
+        ,{
+            "modname": "上传"
+            ,"alias": "upload"
+        }
+    ]
+};
+JSON.stringify(data,null,2)
+                            </pre>
+            
+                            <pre>
+输出:{
+    "title": "Layui常用模块"
+    ,"list": [
+        {
+            "modname": "弹层"
+            ,"alias": "layer"
+            ,"site": "layer.layui.com"
+        }
+        ,{
+            "modname": "表单"
+            ,"alias": "form"
+        }
+        ,{
+            "modname": "分页"
+            ,"alias": "laypage"
+        }
+        ,{
+            "modname": "日期"
+            ,"alias": "laydate"
+        }
+        ,{
+            "modname": "上传"
+            ,"alias": "upload"
+        }
+    ]
+}
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">jquery点击来回切换class类</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+$("#03").click(function(){     
+    $(".tableBorder4").toggle('hide'); 
+});
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">阻止事件冒泡</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+&lt;div&gt;
+    &lt;p&gt;段落文本内容
+        &lt;input type="button" value="点击" /&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+                               
+$(":button").click( function(event){
+    alert("button-click");
+    // 阻止事件冒泡到DOM树上
+    event.stopPropagation(); // 只执行button的click，如果注释掉该行，将执行button、p和div的click （同类型的事件）  
+} );
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">深拷贝</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+function deepClone(obj) {
+    if (typeof obj !== 'object') return obj;
+    if (JSON) {
+        let str = JSON.stringify(obj);
+        return JSON.parse(str);
+    }
+}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../lib/layui-v2.6.3/layui.min.js" charset="utf-8"></script>
+    <script src="../../js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+    <script>
+        layui.use(['code', 'searchItem'], function () {
+            var code = layui.code,
+                searchItem = layui.searchItem;
+            code();
+            searchItem.render();
+        });
+    </script>
+</body>
+
+</html>

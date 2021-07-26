@@ -71,11 +71,151 @@ function unique (arr) {
                             </pre>
                         </div>
                     </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">声明和初始化数组</h2>
+                        <div class="layui-colla-content">
+                            一维数组：
+                            <pre class="layui-code" lay-title="JavaScript">
+const array = Array(5).fill(''); 
+                            </pre>
+                            
+                            <pre>
+ 输出: (5) ["", "", "", "", ""]
+                            </pre>
+                            
+                            二维数组：
+                            <pre class="layui-code" lay-title="JavaScript">
+const matrix = Array(5).fill(0).map(() => Array(5).fill(0))
+                            </pre>
+
+                            
+                            <pre>
+ 输出:(5) [Array(5), Array(5), Array(5), Array(5), Array(5)]
+        0: (5) [0, 0, 0, 0, 0]
+        1: (5) [0, 0, 0, 0, 0]
+        2: (5) [0, 0, 0, 0, 0]
+        3: (5) [0, 0, 0, 0, 0]
+        4: (5) [0, 0, 0, 0, 0]
+        length: 5
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">求和</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const array  = [5,4,7,8,9,2];
+array.reduce((a,b) => a+b);
+                            </pre>
+
+                            <pre>
+输出: 35
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">求最大值</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const array  = [5,4,7,8,9,2];
+array.reduce((a,b) => a>b?a:b);
+                            </pre>
+
+                            <pre>
+输出:9
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">求最小值</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const array  = [5,4,7,8,9,2];
+array.reduce((a,b) => a < b?a:b);
+                            </pre>
+
+                            <pre>
+输出:2
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">排序字符串，数字或对象等数组</h2>
+                        <div class="layui-colla-content">
+                            字符串数组排序
+                            <pre class="layui-code" lay-title="JavaScript">
+const stringArr = ["Joe", "Kapil", "Steve", "Musk"]
+stringArr.sort();
+stringArr.reverse();
+                            </pre>
+
+                            <pre>
+输出:(4) ["Joe", "Kapil", "Musk", "Steve"]
+    (4) ["Steve", "Musk", "Kapil", "Joe"]
+                            </pre>
+                            数字数组排序
+                            <pre class="layui-code" lay-title="JavaScript">
+const array  = [40, 100, 1, 5, 25, 10];
+array.sort((a,b) => a-b);
+array.sort((a,b) => b-a);
+                            </pre>
+
+                            <pre>
+输出:(6) [1, 5, 10, 25, 40, 100]
+    (6) [100, 40, 25, 10, 5, 1]
+                            </pre>
+                            对象数组排序
+                            <pre class="layui-code" lay-title="JavaScript">
+const objectArr = [ 
+    { first_name: 'Lazslo', last_name: 'Jamf'     },
+    { first_name: 'Pig',    last_name: 'Bodine'   },
+    { first_name: 'Pirate', last_name: 'Prentice' }
+];
+objectArr.sort((a, b) => a.last_name.localeCompare(b.last_name));
+                            </pre>
+
+                            <pre>
+输出:(3) [{…}, {…}, {…}]
+    0: {first_name: "Pig", last_name: "Bodine"}
+    1: {first_name: "Lazslo", last_name: "Jamf"}
+    2: {first_name: "Pirate", last_name: "Prentice"}
+    length: 3
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">数组过滤虚值</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const array = [3, 0, 6, 7, '', false];
+array.filter(Boolean);
+                            </pre>
+            
+                            <pre>
+输出:(3) [3, 6, 7]
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">数组洗牌</h2>
+                        <div class="layui-colla-content">
+                            <pre class="layui-code" lay-title="JavaScript">
+const list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+list.sort(() => {
+    return Math.random() - 0.5;
+});
+                            </pre>
+            
+                            <pre>
+输出:(9) [2, 5, 1, 6, 9, 8, 4, 3, 7]
+                            </pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../../lib/layui-v2.6.3/layui.min.js" charset="utf-8"></script>
     <script src="../../js/lay-config.js?v=2.0.0" charset="utf-8"></script>
     <script>
         layui.use(['code', 'searchItem'], function () {

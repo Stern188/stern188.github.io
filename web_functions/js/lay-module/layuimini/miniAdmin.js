@@ -22,7 +22,6 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
         /**
          * 后台框架初始化
          * @param options.iniUrl   后台初始化接口地址
-         * @param options.clearUrl   后台清理缓存接口
          * @param options.urlHashLocation URL地址hash定位
          * @param options.bgColorDefault 默认皮肤
          * @param options.multiModule 是否开启多模块
@@ -245,41 +244,6 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
         listen: function () {
 
             /**
-             * 清理
-             */
-            $('body').on('click', '[data-clear]', function () {
-                var loading = layer.load(0, {shade: false, time: 2 * 1000});
-                sessionStorage.clear();
-
-                // 判断是否清理服务端
-                var clearUrl = $(this).attr('data-href');
-                if (clearUrl != undefined && clearUrl != '' && clearUrl != null) {
-                    $.getJSON(clearUrl, function (data, status) {
-                        layer.close(loading);
-                        if (data.code != 1) {
-                            return miniAdmin.error(data.msg);
-                        } else {
-                            return miniAdmin.success(data.msg);
-                        }
-                    }).fail(function () {
-                        layer.close(loading);
-                        return miniAdmin.error('清理缓存接口有误');
-                    });
-                } else {
-                    layer.close(loading);
-                    return miniAdmin.success('清除缓存成功');
-                }
-            });
-
-            /**
-             * 刷新
-             */
-            $('body').on('click', '[data-refresh]', function () {
-                $(".layui-tab-item.layui-show").find("iframe")[0].contentWindow.location.reload();
-                miniAdmin.success('刷新成功');
-            });
-
-            /**
              * 监听提示信息
              */
             $("body").on("mouseenter", ".layui-nav-tree .menu-li", function () {
@@ -315,23 +279,6 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                     } catch (e) {
                         console.log(e.message);
                     }
-                }
-            });
-
-
-            /**
-             * 全屏
-             */
-            $('body').on('click', '[data-check-screen]', function () {
-                var check = $(this).attr('data-check-screen');
-                if (check == 'full') {
-                    miniAdmin.fullScreen();
-                    $(this).attr('data-check-screen', 'exit');
-                    $(this).html('<i class="fa fa-compress"></i>');
-                } else {
-                    miniAdmin.exitFullScreen();
-                    $(this).attr('data-check-screen', 'full');
-                    $(this).html('<i class="fa fa-arrows-alt"></i>');
                 }
             });
 

@@ -34,4 +34,8 @@ layui.config({
     searchItem: 'searchItem/searchItem', // 折叠面板搜索功能封装
     face: 'easyeditor/face', // markdown功能扩展
     easyeditor: 'easyeditor/easyeditor', // markdown功能扩展
+    laymd: 'laymd/laymd', // markdown功能扩展
+    articleNav: 'articleNav/articleNav', // 文章导航
+    dataTemp: 'dataTemp/dataTemp', // 数据模板
+    collapseItem: 'collapseItem/collapseItem', // 折叠框项目封装
 });

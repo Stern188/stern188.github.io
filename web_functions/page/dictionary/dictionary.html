@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+</head>
+
+<body>
+    <div class="layuimini-container">
+        <div class="layuimini-main">
+            <div class="search-box"></div>
+            <div class="layui-field-box" style="display: flex;flex-wrap: wrap;">
+                <div class="dictionary" style="display: flex;flex-wrap: wrap;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../../lib/layui-v2.6.3/layui.min.js" charset="utf-8"></script>
+    <script src="../../lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="../../js/lay-config.js?v=2.0.0" charset="utf-8"></script>
+    <script>
+        layui.use(['collapseItem', 'searchItem'], function () {
+            var collapseItem = layui.collapseItem,
+                searchItem = layui.searchItem;
+            searchItem.render();
+            collapseItem.render([{
+                title: '区域',
+                url: '/api/ragion.json'
+            },{
+                title: '区域1',
+                url: '/api/init.json'
+            }]);
+        });
+    </script>
+</body>
+
+</html>
