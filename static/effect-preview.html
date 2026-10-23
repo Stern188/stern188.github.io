@@ -49,6 +49,7 @@
     </section>
   </div>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <script src="./lz-string.min.js"></script>
   <script>
     (function () {
       var effectFrame = document.getElementById('effect')
@@ -58,14 +59,9 @@
       var effect
       try {
         var encodedPayload = new URLSearchParams(location.search).get('payload') || ''
-        var base64 = encodedPayload.replace(/-/g, '+').replace(/_/g, '/')
-        while (base64.length % 4) base64 += '='
-        var binaryPayload = atob(base64)
-        var escapedPayload = ''
-        for (var payloadIndex = 0; payloadIndex < binaryPayload.length; payloadIndex++) {
-          escapedPayload += '%' + binaryPayload.charCodeAt(payloadIndex).toString(16).padStart(2, '0')
-        }
-        effect = JSON.parse(decodeURIComponent(escapedPayload))
+        var decodedPayload = window.LZString && window.LZString.decompressFromEncodedURIComponent(encodedPayload)
+        if (!decodedPayload) throw new Error('预览内容解压失败')
+        effect = JSON.parse(decodedPayload)
         if (!effect || typeof effect !== 'object') throw new Error('预览内容无效')
       } catch (error) {
         document.getElementById('error').style.display = 'block'
