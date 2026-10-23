@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>代码特效展厅预览</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; background: #f7fafc; color: #24313d; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { display: flex; flex-direction: column; }
+    header, footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px; background: #fff; }
+    header { min-height: 52px; border-bottom: 1px solid #e8edf0; }
+    footer { justify-content: center; flex-wrap: wrap; border-top: 1px solid #e8edf0; }
+    #title { overflow: hidden; font-size: 16px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    button { border: 0; border-radius: 8px; padding: 9px 13px; color: #fff; background: #16778c; font-size: 13px; }
+    button.secondary { color: #16778c; background: rgba(22,119,140,.1); }
+    #stage { position: relative; flex: 1; min-height: 0; padding: 12px; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; border-radius: 10px; background: #fff; }
+    #paused { position: absolute; inset: 12px; display: none; align-items: center; justify-content: center; border-radius: 10px; color: #687783; background: rgba(247,250,252,.96); font-size: 14px; }
+    #modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(0,0,0,.58); }
+    #modalPanel { display: flex; flex-direction: column; width: 100%; height: 90%; padding: 14px; border-radius: 12px; background: #fff; }
+    #modalHeader { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; font-weight: 700; }
+    #code { flex: 1; min-height: 0; overflow: auto; padding: 12px; border-radius: 8px; color: #222; background: #f6f9fa; font: 12px/1.6 Consolas, monospace; white-space: pre; }
+    #modal button { margin-top: 10px; }
+    #error { display: none; padding: 20px; color: #b42318; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <span id="title">特效预览</span>
+    <button id="favorite" class="secondary" type="button">☆</button>
+  </header>
+  <main id="stage">
+    <iframe id="effect" sandbox="allow-scripts" title="隔离的特效代码预览"></iframe>
+    <div id="paused">动画已暂停，点击播放继续</div>
+    <div id="error"></div>
+  </main>
+  <footer>
+    <button id="play" type="button">暂停</button>
+    <button id="source" class="secondary" type="button">查看源码</button>
+    <button id="copy" class="secondary" type="button">复制代码</button>
+    <button id="tutorial" class="secondary" type="button" style="display:none">关联教程</button>
+  </footer>
+  <div id="modal">
+    <section id="modalPanel">
+      <div id="modalHeader"><span>HTML / CSS / JavaScript 源码</span><button id="close" class="secondary" type="button">关闭</button></div>
+      <pre id="code"></pre>
+      <button id="copyModal" type="button">复制全部源码</button>
+    </section>
+  </div>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <script>
+    (function () {
+      var effectFrame = document.getElementById('effect')
+      var pausedLayer = document.getElementById('paused')
+      var playButton = document.getElementById('play')
+      var modal = document.getElementById('modal')
+      var effect
+      try {
+        var encodedPayload = new URLSearchParams(location.search).get('payload') || ''
+        var base64 = encodedPayload.replace(/-/g, '+').replace(/_/g, '/')
+        while (base64.length % 4) base64 += '='
+        var binaryPayload = atob(base64)
+        var escapedPayload = ''
+        for (var payloadIndex = 0; payloadIndex < binaryPayload.length; payloadIndex++) {
+          escapedPayload += '%' + binaryPayload.charCodeAt(payloadIndex).toString(16).padStart(2, '0')
+        }
+        effect = JSON.parse(decodeURIComponent(escapedPayload))
+        if (!effect || typeof effect !== 'object') throw new Error('预览内容无效')
+      } catch (error) {
+        document.getElementById('error').style.display = 'block'
+        document.getElementById('error').textContent = '读取特效失败：' + error.message
+        effectFrame.style.display = 'none'
+        return
+      }
+      document.title = effect.name || '代码特效预览'
+      document.getElementById('title').textContent = effect.name || '代码特效预览'
+      var favoriteButton = document.getElementById('favorite')
+      var isFavorite = !!effect.isFavorite
+      favoriteButton.textContent = isFavorite ? '★' : '☆'
+      var html = String(effect.html || '')
+      var css = String(effect.css || '').replace(/<\/style/gi, '<\\/style')
+      var js = String(effect.js || '').replace(/<\/script/gi, '<\\/script')
+      var fullSource = ['<!-- HTML -->\n' + html, '/* CSS */\n' + css, '// JavaScript\n' + js].filter(Boolean).join('\n\n')
+      var isPlaying = effect.autoPlay !== false
+      var maxTimer = setTimeout(stopPreview, 300000)
+
+      function previewDocument() {
+        return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+          '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; script-src \'unsafe-inline\'; img-src data: blob:; font-src data:; media-src data: blob:; connect-src \'none\'; form-action \'none\'; base-uri \'none\'">' +
+          '<style>html,body{margin:0;min-height:100%;overflow:auto}body{padding:12px}' + css + '</style></head><body>' +
+          html + '<script>' + js + '<\/script></body></html>'
+      }
+      function startPreview() {
+        effectFrame.srcdoc = previewDocument()
+        effectFrame.style.display = 'block'
+        pausedLayer.style.display = 'none'
+        playButton.textContent = '暂停'
+        isPlaying = true
+      }
+      function stopPreview() {
+        effectFrame.removeAttribute('srcdoc')
+        effectFrame.style.display = 'none'
+        pausedLayer.style.display = 'flex'
+        playButton.textContent = '播放'
+        isPlaying = false
+      }
+      function copyAll() {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(fullSource).then(function () { alert('复制成功') }).catch(function () { fallbackCopy() })
+        } else fallbackCopy()
+      }
+      function fallbackCopy() {
+        var input = document.createElement('textarea')
+        input.value = fullSource
+        input.style.position = 'fixed'
+        input.style.opacity = '0'
+        document.body.appendChild(input)
+        input.select()
+        try { document.execCommand('copy'); alert('复制成功') } catch (error) { alert('复制失败，请长按源码复制') }
+        input.remove()
+      }
+      playButton.addEventListener('click', function () { isPlaying ? stopPreview() : startPreview() })
+      document.getElementById('source').addEventListener('click', function () {
+        document.getElementById('code').textContent = fullSource
+        modal.style.display = 'flex'
+      })
+      document.getElementById('copy').addEventListener('click', copyAll)
+      document.getElementById('copyModal').addEventListener('click', copyAll)
+      document.getElementById('close').addEventListener('click', function () { modal.style.display = 'none' })
+      favoriteButton.addEventListener('click', function () {
+        isFavorite = !isFavorite
+        favoriteButton.textContent = isFavorite ? '★' : '☆'
+      })
+      if (effect.articleId) {
+        var tutorialButton = document.getElementById('tutorial')
+        tutorialButton.style.display = 'inline-block'
+        tutorialButton.addEventListener('click', function () {
+          if (window.wx && wx.miniProgram) {
+            wx.miniProgram.navigateTo({ url: '/pages/article-reader/article-reader?id=' + encodeURIComponent(effect.articleId) })
+          } else alert('请返回特效卡片打开关联教程')
+        })
+      }
+      if (isPlaying) startPreview()
+      else stopPreview()
+      window.addEventListener('pagehide', function () {
+        clearTimeout(maxTimer)
+        stopPreview()
+        if (window.wx && wx.miniProgram) {
+          wx.miniProgram.postMessage({ data: { type: 'effect-favorite', effectId: effect.id, favorite: isFavorite } })
+        }
+      })
+    })()
+  </script>
+</body>
+</html>
