@@ -37,6 +37,7 @@
   </main>
   <footer>
     <button id="play" type="button">暂停</button>
+    <button id="music" class="secondary" type="button" style="display:none">播放背景音乐</button>
     <button id="source" class="secondary" type="button">查看源码</button>
     <button id="copy" class="secondary" type="button">复制代码</button>
     <button id="tutorial" class="secondary" type="button" style="display:none">关联教程</button>
@@ -55,6 +56,7 @@
       var effectFrame = document.getElementById('effect')
       var pausedLayer = document.getElementById('paused')
       var playButton = document.getElementById('play')
+      var musicButton = document.getElementById('music')
       var modal = document.getElementById('modal')
       var effect
       try {
@@ -94,7 +96,28 @@
       var js = String(effect.js || '').replace(/<\/script/gi, '<\\/script')
       var fullSource = ['<!-- HTML -->\n' + html, '/* CSS */\n' + css, '// JavaScript\n' + js].filter(Boolean).join('\n\n')
       var isPlaying = effect.autoPlay !== false
-      var maxTimer = setTimeout(stopPreview, 300000)
+      var backgroundMusic = ''
+      var isMusicPlaying = false
+      var maxTimer = setTimeout(function () {
+        stopPreview()
+        stopMusic()
+      }, 300000)
+
+      if (effect.musicEnabled && /^https:\/\/\S+$/i.test(effect.backgroundMusic || '') && typeof window.Audio === 'function') {
+        backgroundMusic = new Audio(effect.backgroundMusic)
+        backgroundMusic.preload = 'none'
+        backgroundMusic.loop = true
+        backgroundMusic.volume = 0.45
+        musicButton.style.display = 'inline-block'
+      }
+
+      function stopMusic() {
+        if (!backgroundMusic) return
+        backgroundMusic.pause()
+        backgroundMusic.currentTime = 0
+        isMusicPlaying = false
+        musicButton.textContent = '播放背景音乐'
+      }
 
       function previewDocument() {
         return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
@@ -132,6 +155,22 @@
         input.remove()
       }
       playButton.addEventListener('click', function () { isPlaying ? stopPreview() : startPreview() })
+      musicButton.addEventListener('click', function () {
+        if (!backgroundMusic) return
+        if (isMusicPlaying) {
+          backgroundMusic.pause()
+          isMusicPlaying = false
+          musicButton.textContent = '播放背景音乐'
+          return
+        }
+        backgroundMusic.play().then(function () {
+          isMusicPlaying = true
+          musicButton.textContent = '暂停背景音乐'
+        }).catch(function (error) {
+          console.error('[EffectPreview] 背景音乐播放失败', error)
+          alert('背景音乐播放失败，请检查网络或重新上传音频')
+        })
+      })
       document.getElementById('source').addEventListener('click', function () {
         document.getElementById('code').textContent = fullSource
         modal.style.display = 'flex'
@@ -157,6 +196,7 @@
       window.addEventListener('pagehide', function () {
         clearTimeout(maxTimer)
         stopPreview()
+        stopMusic()
         if (window.wx && wx.miniProgram) {
           wx.miniProgram.postMessage({ data: { type: 'effect-favorite', effectId: effect.id, favorite: isFavorite } })
         }
