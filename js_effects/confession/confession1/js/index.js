@@ -1,1 +1,13 @@
-document.body.onkeypress = function(){document.body.classList.toggle('liked')}
+var likeButton = document.querySelector('.like');
+
+function playLikeAnimation() {
+	document.body.classList.add('liked');
+}
+
+likeButton.addEventListener('click', playLikeAnimation);
+likeButton.addEventListener('keydown', function(event) {
+	if (event.key === 'Enter' || event.key === ' ') {
+		event.preventDefault();
+		playLikeAnimation();
+	}
+});
