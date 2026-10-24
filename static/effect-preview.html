@@ -37,7 +37,7 @@
   </main>
   <footer>
     <button id="play" type="button">暂停</button>
-    <button id="music" class="secondary" type="button" style="display:none">播放背景音乐</button>
+    <button id="music" class="secondary" type="button" style="display:none">点击播放背景音乐</button>
     <button id="source" class="secondary" type="button">查看源码</button>
     <button id="copy" class="secondary" type="button">复制代码</button>
     <button id="tutorial" class="secondary" type="button" style="display:none">关联教程</button>
@@ -105,10 +105,26 @@
 
       if (effect.musicEnabled && /^https:\/\/\S+$/i.test(effect.backgroundMusic || '') && typeof window.Audio === 'function') {
         backgroundMusic = new Audio(effect.backgroundMusic)
-        backgroundMusic.preload = 'none'
+        backgroundMusic.preload = 'auto'
         backgroundMusic.loop = true
         backgroundMusic.volume = 0.45
         musicButton.style.display = 'inline-block'
+      }
+
+      function startMusic(showError) {
+        if (!backgroundMusic) return
+        musicButton.textContent = '正在尝试播放…'
+        backgroundMusic.play().then(function () {
+          isMusicPlaying = true
+          musicButton.textContent = '暂停背景音乐'
+        }).catch(function (error) {
+          isMusicPlaying = false
+          musicButton.textContent = '点击播放背景音乐'
+          console.warn('[EffectPreview] 浏览器未允许自动播放背景音乐', error)
+          if (showError) {
+            alert('浏览器暂不允许自动播放，请点击“点击播放背景音乐”')
+          }
+        })
       }
 
       function stopMusic() {
@@ -116,7 +132,7 @@
         backgroundMusic.pause()
         backgroundMusic.currentTime = 0
         isMusicPlaying = false
-        musicButton.textContent = '播放背景音乐'
+        musicButton.textContent = '点击播放背景音乐'
       }
 
       function previewDocument() {
@@ -160,16 +176,10 @@
         if (isMusicPlaying) {
           backgroundMusic.pause()
           isMusicPlaying = false
-          musicButton.textContent = '播放背景音乐'
+          musicButton.textContent = '点击播放背景音乐'
           return
         }
-        backgroundMusic.play().then(function () {
-          isMusicPlaying = true
-          musicButton.textContent = '暂停背景音乐'
-        }).catch(function (error) {
-          console.error('[EffectPreview] 背景音乐播放失败', error)
-          alert('背景音乐播放失败，请检查网络或重新上传音频')
-        })
+        startMusic(true)
       })
       document.getElementById('source').addEventListener('click', function () {
         document.getElementById('code').textContent = fullSource
@@ -193,6 +203,7 @@
       }
       if (isPlaying) startPreview()
       else stopPreview()
+      if (backgroundMusic) startMusic(false)
       window.addEventListener('pagehide', function () {
         clearTimeout(maxTimer)
         stopPreview()
