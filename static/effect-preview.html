@@ -50,7 +50,7 @@
     </section>
   </div>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
-  <script src="./lz-string.min.js?v=20261024-6"></script>
+  <script src="./lz-string.min.js?v=20261024-10"></script>
   <script>
     (function () {
       var effectFrame = document.getElementById('effect')
@@ -77,7 +77,9 @@
         if (!encodedPayload) throw new Error('链接中没有预览数据，请从小程序重新复制预览链接')
         if (!window.LZString) throw new Error('解压组件加载失败，请刷新页面或检查网络')
         var decodedPayload = window.LZString.decompressFromEncodedURIComponent(encodedPayload)
-        if (!decodedPayload) throw new Error('预览数据解压失败，链接可能不完整，请重新复制')
+        if (!decodedPayload) {
+          throw new Error('预览链接数据不完整或已被截断，请从小程序重新复制完整链接后再打开')
+        }
         effect = JSON.parse(decodedPayload)
         if (!effect || typeof effect !== 'object') throw new Error('预览内容无效')
       } catch (error) {
@@ -119,10 +121,17 @@
           musicButton.textContent = '暂停背景音乐'
         }).catch(function (error) {
           isMusicPlaying = false
-          musicButton.textContent = '点击播放背景音乐'
-          console.warn('[EffectPreview] 浏览器未允许自动播放背景音乐', error)
+          if (error && error.name === 'NotAllowedError') {
+            musicButton.textContent = '自动播放受限，点击播放音乐'
+            console.info('[EffectPreview] 浏览器策略拦截自动播放，等待用户点击')
+          } else {
+            musicButton.textContent = '播放失败，点击重试'
+            console.error('[EffectPreview] 背景音乐播放失败', error)
+          }
           if (showError) {
-            alert('浏览器暂不允许自动播放，请点击“点击播放背景音乐”')
+            alert(error && error.name === 'NotAllowedError'
+              ? '浏览器限制自动播放，请点击音乐按钮开始播放'
+              : '背景音乐播放失败，请检查网络或重新上传音频')
           }
         })
       }
