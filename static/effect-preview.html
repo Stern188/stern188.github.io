@@ -49,7 +49,7 @@
     </section>
   </div>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
-  <script src="./lz-string.min.js?v=20261024-5"></script>
+  <script src="./lz-string.min.js?v=20261024-6"></script>
   <script>
     (function () {
       var effectFrame = document.getElementById('effect')
@@ -58,11 +58,24 @@
       var modal = document.getElementById('modal')
       var effect
       try {
-        var hashPayload = location.hash.indexOf('#payload=') === 0 ? location.hash.slice(9) : ''
-        var queryPayload = new URLSearchParams(location.search).get('payload') || ''
-        var encodedPayload = (hashPayload || queryPayload).replace(/\./g, '+')
-        var decodedPayload = window.LZString && window.LZString.decompressFromEncodedURIComponent(encodedPayload)
-        if (!decodedPayload) throw new Error('预览内容解压失败')
+        var hashMarker = '#payload='
+        var hashIndex = location.hash.indexOf(hashMarker)
+        var encodedPayload = hashIndex >= 0 ? location.hash.slice(hashIndex + hashMarker.length) : ''
+        if (!encodedPayload) {
+          var queryMatch = location.search.match(/[?&]payload=([^&]*)/)
+          if (queryMatch) {
+            try {
+              encodedPayload = decodeURIComponent(queryMatch[1])
+            } catch (decodeError) {
+              encodedPayload = queryMatch[1]
+            }
+          }
+        }
+        encodedPayload = encodedPayload.replace(/\./g, '+')
+        if (!encodedPayload) throw new Error('链接中没有预览数据，请从小程序重新复制预览链接')
+        if (!window.LZString) throw new Error('解压组件加载失败，请刷新页面或检查网络')
+        var decodedPayload = window.LZString.decompressFromEncodedURIComponent(encodedPayload)
+        if (!decodedPayload) throw new Error('预览数据解压失败，链接可能不完整，请重新复制')
         effect = JSON.parse(decodedPayload)
         if (!effect || typeof effect !== 'object') throw new Error('预览内容无效')
       } catch (error) {
