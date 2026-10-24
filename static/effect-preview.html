@@ -50,7 +50,8 @@
     </section>
   </div>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
-  <script src="./lz-string.min.js?v=20261024-10"></script>
+  <script src="./lz-string.min.js?v=20261024-11"></script>
+  <script src="./pako.min.js?v=20261024-11"></script>
   <script>
     (function () {
       var effectFrame = document.getElementById('effect')
@@ -60,25 +61,39 @@
       var modal = document.getElementById('modal')
       var effect
       try {
-        var hashMarker = '#payload='
+        var hashMarker = location.hash.indexOf('#gzip=') === 0 ? '#gzip=' : '#payload='
+        var payloadType = hashMarker === '#gzip=' ? 'gzip' : 'payload'
         var hashIndex = location.hash.indexOf(hashMarker)
         var encodedPayload = hashIndex >= 0 ? location.hash.slice(hashIndex + hashMarker.length) : ''
         if (!encodedPayload) {
-          var queryMatch = location.search.match(/[?&]payload=([^&]*)/)
+          var queryMatch = location.search.match(/[?&](gzip|payload)=([^&]*)/)
           if (queryMatch) {
+            payloadType = queryMatch[1]
             try {
-              encodedPayload = decodeURIComponent(queryMatch[1])
+              encodedPayload = decodeURIComponent(queryMatch[2])
             } catch (decodeError) {
-              encodedPayload = queryMatch[1]
+              encodedPayload = queryMatch[2]
             }
           }
         }
-        encodedPayload = encodedPayload.replace(/\./g, '+')
         if (!encodedPayload) throw new Error('链接中没有预览数据，请从小程序重新复制预览链接')
-        if (!window.LZString) throw new Error('解压组件加载失败，请刷新页面或检查网络')
-        var decodedPayload = window.LZString.decompressFromEncodedURIComponent(encodedPayload)
+        var decodedPayload = ''
+        if (payloadType === 'gzip') {
+          if (!window.pako) throw new Error('预览压缩组件加载失败，请刷新页面或检查网络')
+          var base64 = encodedPayload.replace(/-/g, '+').replace(/_/g, '/')
+          while (base64.length % 4) base64 += '='
+          var binary = atob(base64)
+          var bytes = new Uint8Array(binary.length)
+          for (var byteIndex = 0; byteIndex < binary.length; byteIndex++) {
+            bytes[byteIndex] = binary.charCodeAt(byteIndex)
+          }
+          decodedPayload = window.pako.inflate(bytes, { to: 'string' })
+        } else {
+          if (!window.LZString) throw new Error('解压组件加载失败，请刷新页面或检查网络')
+          decodedPayload = window.LZString.decompressFromEncodedURIComponent(encodedPayload.replace(/\./g, '+'))
+        }
         if (!decodedPayload) {
-          throw new Error('预览链接数据不完整或已被截断，请从小程序重新复制完整链接后再打开')
+          throw new Error('预览链接数据无效或不完整，请从小程序重新复制完整链接后再打开')
         }
         effect = JSON.parse(decodedPayload)
         if (!effect || typeof effect !== 'object') throw new Error('预览内容无效')
