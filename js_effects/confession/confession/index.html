@@ -21,20 +21,95 @@
 
         -->
     </style>
+    <style type="text/css">
+        #setup-screen {
+            max-width: 480px;
+            margin: 48px auto;
+            padding: 24px;
+            border: 1px solid #f0d7d7;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 8px 28px rgba(70, 30, 30, .12);
+        }
+
+        #setup-screen h1 {
+            margin: 0 0 8px;
+            font-size: 24px;
+        }
+
+        #setup-screen p {
+            margin: 0 0 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        #setup-form label {
+            display: block;
+            margin: 16px 0 6px;
+            font-weight: bold;
+        }
+
+        #setup-form input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font: inherit;
+        }
+
+        #setup-form button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 11px;
+            border: 0;
+            border-radius: 6px;
+            background: #be1a25;
+            color: #fff;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        #setup-error {
+            margin-top: 12px;
+            color: #b42318;
+        }
+
+        @media (max-width: 520px) {
+            #setup-screen {
+                margin: 24px 16px;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <p><button><a href="./confession.rar">源码下载</a></button></p>
-    <audio autoplay="autopaly">
+    <section id="setup-screen">
+        <h1>先填写专属信息</h1>
+        <p>填写后即可开始表白特效，开始时间用于显示已相伴时长。</p>
+        <form id="setup-form">
+            <label for="recipient-name-input">对方姓名</label>
+            <input id="recipient-name-input" name="recipientName" type="text" maxlength="30" autocomplete="name" required>
+            <label for="sender-name-input">你的署名（选填）</label>
+            <input id="sender-name-input" name="senderName" type="text" maxlength="30" autocomplete="off">
+            <label for="together-input">开始计时的日期和时间</label>
+            <input id="together-input" name="together" type="datetime-local" required>
+            <button type="submit">开始特效</button>
+            <div id="setup-error" role="alert" aria-live="polite"></div>
+        </form>
+    </section>
+    <audio id="background-music">
         <source src="renxi.mp3" type="audio/mp3" />
     </audio>
-    <div id="main">
+    <div id="main" style="display:none">
         <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a
                 href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
         <div id="wrap">
             <div id="text">
                 <div id="code">
-                    <font color="#FF0000"> <span class="say">亲爱的小寒寒，我爱你，虽然你看不见我对你的告白</span><br>
+                    <font color="#FF0000"> <span class="say">亲爱的<span id="greeting-name"></span>，我爱你，虽然你看不见我对你的告白</span><br>
                         <span class="say"> </span><br>
                         <span class="say"> 我知道我不会甜言蜜语，但是我会用行动证明一切</span><br>
                         <span class="say"> </span><br>
@@ -47,14 +122,14 @@
 
                         <span class="say">虽然你看不见我的告白，但是我还是要把这些心里话说出来</span><br>
                         <span class="say"> </span><br>
-                        <span class="say"><span class="space"></span> -- 爱你的仁希--</span>
+                        <span class="say"><span class="space"></span> -- 爱你的<span id="sender-name">人</span> --</span>
                     </font>
                     </p>
                 </div>
             </div>
             <div id="clock-box">
                 <span class="STYLE1"></span>
-                <font color="#33CC00">亲爱的小寒，我喜欢你</font>
+                <font color="#33CC00">亲爱的<span id="clock-name"></span>，我喜欢你</font>
                 <span class="STYLE1">已经是……</span>
                 <div id="clock"></div>
             </div>
@@ -67,6 +142,7 @@
     </script>
 
     <script>
+        function startEffect() {
         (function () {
             var canvas = $('#canvas');
 
@@ -196,17 +272,10 @@
             }));
 
             var textAnimate = eval(Jscex.compile("async", function () {
-                var together = new Date();
-                together.setFullYear(2010, 1, 15); //时间年月日
-                together.setHours(16); //小时	
-                together.setMinutes(53); //分钟
-                together.setSeconds(0); //秒前一位
-                together.setMilliseconds(2); //秒第二位
-
                 $("#code").show().typewriter();
                 $("#clock-box").fadeIn(500);
                 while (true) {
-                    timeElapse(together);
+                    timeElapse(window.togetherDate);
                     $await(Jscex.Async.sleep(1000));
                 }
             }));
@@ -224,6 +293,43 @@
 
             runAsync().start();
         })();
+        }
+
+        document.getElementById("setup-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var recipientName = document.getElementById("recipient-name-input").value.trim();
+            var senderName = document.getElementById("sender-name-input").value.trim();
+            var togetherDate = new Date(document.getElementById("together-input").value);
+            var error = document.getElementById("setup-error");
+
+            if (!recipientName || isNaN(togetherDate.getTime())) {
+                error.textContent = "请填写对方姓名和有效的开始时间。";
+                return;
+            }
+            if (togetherDate > new Date()) {
+                error.textContent = "开始时间不能晚于当前时间。";
+                return;
+            }
+
+            error.textContent = "";
+            document.getElementById("greeting-name").textContent = recipientName;
+            document.getElementById("clock-name").textContent = recipientName;
+            document.getElementById("sender-name").textContent = senderName || "人";
+            window.togetherDate = togetherDate;
+            document.getElementById("setup-screen").style.display = "none";
+            document.getElementById("main").style.display = "";
+
+            var music = document.getElementById("background-music");
+            var playAttempt = music.play();
+            if (playAttempt && typeof playAttempt.catch === "function") {
+                playAttempt.catch(function (playError) {
+                    console.warn("背景音乐播放失败", playError);
+                });
+            }
+
+            startEffect();
+        });
     </script>
 </body>
 
